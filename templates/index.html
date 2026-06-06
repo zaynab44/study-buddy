@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudyBuddy</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar">
+      <div class="logo">
+        <div class="logo-icon">📚</div>
+        <div class="logo-text">Study<span>Buddy</span></div>
+      </div>
+      <p class="sidebar-desc">Enter any topic and AI will generate a quiz to test your knowledge instantly.</p>
+      <div class="subject-tags">
+        <span onclick="setTopic('Python Programming')">Python</span>
+        <span onclick="setTopic('Data Structures')">Data Structures</span>
+        <span onclick="setTopic('Islamic Studies')">Islamic Studies</span>
+        <span onclick="setTopic('Calculus')">Calculus</span>
+        <span onclick="setTopic('Computer Networks')">Networks</span>
+        <span onclick="setTopic('Database Management')">Database</span>
+      </div>
+      <div class="sidebar-footer">
+        <p>Powered by Groq AI</p>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="chat-header">
+        <div>
+          <div class="chat-header-title">AI Quiz Generator</div>
+          <div class="chat-header-sub">Test your knowledge on any topic</div>
+        </div>
+        <button class="clear-btn" onclick="resetAll()">Reset</button>
+      </div>
+
+      <div class="content" id="homeScreen">
+        <div class="home-form">
+          <h2>What do you want to study today?</h2>
+          <input type="text" id="topicInput" placeholder="Enter any topic e.g. Python, Networking, History..." />
+          <div class="num-row">
+            <label>Number of questions:</label>
+            <select id="numQuestions">
+              <option value="3">3 Questions</option>
+              <option value="5" selected>5 Questions</option>
+              <option value="10">10 Questions</option>
+            </select>
+          </div>
+          <button class="start-btn" onclick="generateQuiz()" id="startBtn">
+            🚀 Generate Quiz
+          </button>
+        </div>
+      </div>
+
+      <div class="content" id="quizScreen" style="display:none">
+        <div class="quiz-container" id="quizContainer"></div>
+        <div class="quiz-nav">
+          <button class="nav-btn prev" onclick="prevQuestion()" id="prevBtn" style="display:none">← Previous</button>
+          <div class="progress-text" id="progressText"></div>
+          <button class="nav-btn next" onclick="nextQuestion()" id="nextBtn">Next →</button>
+        </div>
+      </div>
+
+      <div class="content" id="resultsScreen" style="display:none">
+        <div class="results-container">
+          <div class="score-circle" id="scoreCircle"></div>
+          <h2 id="scoreMessage"></h2>
+          <p id="scoreSubtext"></p>
+          <div class="results-breakdown" id="resultsBreakdown"></div>
+          <button class="start-btn" onclick="resetAll()">Try Another Topic</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
